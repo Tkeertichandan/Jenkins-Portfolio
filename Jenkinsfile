@@ -12,7 +12,7 @@ pipeline {
         // ===== FRONTEND BUILD =====
         stage('Build Frontend') {
             steps {
-                dir('porte') {
+                dir('portfe') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
