@@ -21,7 +21,7 @@ const MainNavBar = () => {
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
         <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>About</Link>
         <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>Contact</Link>
-        {/* <Link to="/adminlogin" className={location.pathname === "/adminlogin" ? "active" : ""}>Admin Login</Link> */}
+        <Link to="/adminlogin" className={location.pathname === "/adminlogin" ? "active" : ""}>Admin Login</Link>
         <Link to="/userviewcertificate">Certificate</Link>
         <Link to="/uservieweducation">Education</Link>
         <Link to="/userviewproject">Project</Link>
