@@ -32,7 +32,7 @@ pipeline {
 
                 # Create new folder and copy built files
                 mkdir -p "$FRONTEND_PATH/myportfolio"
-                cp -R F-API/dist/* "$FRONTEND_PATH/myportfolio"
+                cp -R portfe/dist/* "$FRONTEND_PATH/myportfolio"
 
                 echo "Frontend deployed successfully!"
                 '''
