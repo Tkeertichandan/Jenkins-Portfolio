@@ -7,7 +7,7 @@ function AppContent() {
   const { isAdminLoggedIn } = useAuth();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/myportfolio">
       {isAdminLoggedIn ? <AdminNavBar /> : <MainNavBar />}
     </BrowserRouter>
   );
