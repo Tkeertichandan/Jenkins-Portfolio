@@ -1,73 +1,147 @@
-/* Main Navbar Container */
-.main-navbar {
-  background-color: #ff7f27; /* Nice orange */
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center; /* Center links */
-  align-items: center;
-  gap: 25px; /* Spacing between links */
+/* =============================
+   Keyframe Animations
+   ============================= */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Navbar Links */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   Main Navbar
+   ============================= */
+
+.main-navbar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.6s ease-out;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
 .main-navbar a {
   text-decoration: none;
-  color: white; /* Default text color */
+  color: white;
   font-size: 16px;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Different background for active link */
+.main-navbar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.4s;
+}
+
+.main-navbar a:hover::before {
+  left: 100%;
+}
+
+.main-navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .main-navbar a.active {
-  background-color: #e66a12; /* Darker orange */
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
 }
 
-/* Remove underline on click */
 .main-navbar a:focus {
   outline: none;
 }
 
+/* =============================
+   Contact Page
+   ============================= */
 
-/* Contact Page Styles */
 .contact-page {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
-  padding: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .contact-card {
-  background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 2.5rem;
-  max-width: 500px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  padding: 3rem;
+  max-width: 550px;
   width: 100%;
   text-align: center;
+  animation: fadeIn 1s ease-out 0.2s backwards;
 }
 
-/* Title & Description */
+/* =============================
+   Contact Title & Description
+   ============================= */
+
 .contact-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1f2937;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 1rem;
 }
 
 .contact-description {
   color: #4b5563;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-/* Buttons */
+/* =============================
+   Contact Buttons
+   ============================= */
+
 .contact-options {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .contact-btn {
@@ -75,50 +149,91 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-size: 0.95rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.contact-btn:hover::before {
+  width: 400px;
+  height: 400px;
 }
 
 .contact-btn .icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
 }
 
-/* Specific Button Styles */
+.contact-btn:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Email Button */
 .email-btn {
-  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
   color: white;
 }
 
 .email-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
+/* Phone Button */
 .phone-btn {
-  border: 1px solid #d1d5db;
-  color: #374151;
+  border: 2px solid #667eea;
+  color: #667eea;
   background: white;
 }
 
 .phone-btn:hover {
-  background: #f3f4f6;
+  background: #f8f9ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
 }
 
-/* Social Links */
+/* =============================
+   Social Links
+   ============================= */
+
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 2rem;
+  margin-top: 2.5rem;
 }
 
 .icon-lg {
-  width: 28px;
-  height: 28px;
-  transition: color 0.3s ease;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+}
+
+.linkedin-link,
+.github-link {
+  padding: 12px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .linkedin-link {
@@ -126,7 +241,12 @@
 }
 
 .linkedin-link:hover {
-  color: #1e40af;
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateY(-3px) rotate(5deg);
+}
+
+.linkedin-link:hover .icon-lg {
+  transform: scale(1.2);
 }
 
 .github-link {
@@ -134,12 +254,86 @@
 }
 
 .github-link:hover {
-  color: black;
+  background: rgba(17, 24, 39, 0.1);
+  transform: translateY(-3px) rotate(-5deg);
 }
 
-/* Footer */
+.github-link:hover .icon-lg {
+  transform: scale(1.2);
+}
+
+/* =============================
+   Contact Footer
+   ============================= */
+
 .contact-footer {
-  margin-top: 2.5rem;
-  font-size: 0.85rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
   color: #9ca3af;
+}
+
+/* =============================
+   Responsive Design
+   ============================= */
+
+@media (max-width: 768px) {
+  .main-navbar {
+    padding: 12px 20px;
+    gap: 8px;
+  }
+  
+  .main-navbar a {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .contact-card {
+    padding: 2rem;
+  }
+  
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-description {
+    font-size: 1rem;
+  }
+  
+  .contact-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-navbar {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+  }
+  
+  .main-navbar a {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+  
+  .contact-page {
+    padding: 1.5rem;
+  }
+  
+  .contact-card {
+    padding: 1.5rem;
+  }
+  
+  .contact-title {
+    font-size: 1.75rem;
+  }
+  
+  .social-links {
+    gap: 1.5rem;
+  }
+  
+  .icon-lg {
+    width: 28px;
+    height: 28px;
+  }
 }

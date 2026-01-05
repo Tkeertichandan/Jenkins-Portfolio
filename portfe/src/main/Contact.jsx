@@ -35,7 +35,7 @@ export default function Contact() {
         {/* Social Links */}
         <div className="social-links">
           <a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://linkedin.com/in/thatavarthi-keerti-chandan-0780b2304"
             target="_blank"
             rel="noopener noreferrer"
             className="linkedin-link"
@@ -43,7 +43,7 @@ export default function Contact() {
             <Linkedin className="icon-lg" />
           </a>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/Tkeertichandan"
             target="_blank"
             rel="noopener noreferrer"
             className="github-link"

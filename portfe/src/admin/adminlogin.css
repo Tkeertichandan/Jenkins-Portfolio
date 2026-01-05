@@ -1,74 +1,212 @@
+/* =============================
+   Admin Login Container
+   ============================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .admin-login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #fffaf0, #ffe0cc);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 20px;
 }
 
 .admin-login-box {
-  background: #fff;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   text-align: center;
+  animation: fadeIn 0.8s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .admin-login-box h3 {
-  margin-bottom: 20px;
-  text-decoration: underline;
-  color: #d35400;
-  font-size: 22px;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-bottom: 15px;
 }
 
+.admin-login-box h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* =============================
+   Login Messages
+   ============================= */
+
 .admin-login-message {
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .admin-login-message.success {
-  color: green;
+  color: #10b981;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border: 2px solid #10b981;
 }
 
 .admin-login-message.error {
-  color: red;
+  color: #ef4444;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 2px solid #ef4444;
 }
+
+/* =============================
+   Form Styling
+   ============================= */
 
 .admin-login-box form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .admin-login-box label {
-  font-weight: bold;
-  color: #555;
+  font-weight: 600;
+  color: #2d3748;
   text-align: left;
+  font-size: 14px;
+  margin-bottom: -10px;
 }
 
 .admin-login-box input[type="text"],
 .admin-login-box input[type="password"] {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ffcc99;
-  border-radius: 8px;
-  background-color: #fffaf0;
-  font-size: 14px;
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #fff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  font-family: inherit;
 }
 
+.admin-login-box input[type="text"]:focus,
+.admin-login-box input[type="password"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.admin-login-box input[type="text"]::placeholder,
+.admin-login-box input[type="password"]::placeholder {
+  color: #a0aec0;
+}
+
+/* =============================
+   Login Button
+   ============================= */
+
 .admin-login-box button {
-  background-color: #ff944d;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 10px 20px;
+  padding: 14px 32px;
   border: none;
-  border-radius: 25px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-login-box button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.admin-login-box button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .admin-login-box button:hover {
-  background-color: #e67300;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.admin-login-box button:active {
+  transform: translateY(0);
+}
+
+/* =============================
+   Responsive Design
+   ============================= */
+
+@media (max-width: 480px) {
+  .admin-login-box {
+    padding: 40px 30px;
+  }
+  
+  .admin-login-box h3 {
+    font-size: 28px;
+  }
+  
+  .admin-login-box input[type="text"],
+  .admin-login-box input[type="password"] {
+    padding: 12px 16px;
+  }
+  
+  .admin-login-box button {
+    padding: 12px 28px;
+  }
 }

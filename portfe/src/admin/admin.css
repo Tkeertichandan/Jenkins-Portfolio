@@ -5,24 +5,62 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #fffaf0, #ffe0cc);
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
 /* =============================
-   Semi-Circle Container (Optional for Navbar)
+   Keyframe Animations
+   ============================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* =============================
+   Semi-Circle Container
    ============================= */
 
 .semi-circle-container {
-  background: linear-gradient(to bottom, #ffd699, #fff);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+  backdrop-filter: blur(10px);
   width: 90%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 40px auto;
-  padding: 40px 20px 60px;
-  border-radius: 0 0 100% 100% / 0 0 50% 50%;
-  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+  padding: 40px 30px 60px;
+  border-radius: 25px 25px 50% 50% / 25px 25px 30% 30%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   text-align: center;
+  animation: fadeIn 0.8s ease-out;
 }
 
 /* =============================
@@ -33,30 +71,61 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 30px;
+  padding: 20px;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #333;
-  background-color: #fff3e0;
-  padding: 10px 18px;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: left 0.5s;
+}
+
+.nav-link:hover::before {
+  left: 100%;
 }
 
 .nav-link:hover {
-  background-color: #ffc266;
-  color: #000;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
 }
 
 .logout {
-  color: red;
-  background-color: #ffe6e6;
+  color: #fff;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.logout:hover {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(238, 90, 111, 0.4);
 }
 
 /* =============================
@@ -65,12 +134,14 @@ body {
 
 .admin-container {
   width: 90%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 40px auto;
-  padding: 30px 20px;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-out;
 }
 
 /* =============================
@@ -79,15 +150,35 @@ body {
 
 .admin-form-section,
 .admin-table-section {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  animation: slideIn 0.6s ease-out;
 }
 
 .admin-form-section h3,
 .admin-table-section h3 {
   text-align: center;
-  margin-bottom: 20px;
-  text-decoration: underline;
-  color: #d35400;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.admin-form-section h3::after,
+.admin-table-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
 }
 
 /* =============================
@@ -97,58 +188,104 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
+  gap: 20px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 label {
-  font-weight: bold;
-  color: #555;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+  margin-bottom: -10px;
 }
 
 input[type="text"],
 input[type="url"],
-input[type="date"] {
+input[type="date"],
+textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ffcc99;
-  border-radius: 8px;
-  background-color: #fffaf0;
-  font-size: 14px;
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #fff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
 }
 
 button[type="submit"],
 form button {
-  background-color: #ff944d;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 10px 20px;
+  padding: 14px 32px;
   border: none;
-  border-radius: 25px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before,
+form button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:hover::before,
+form button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 button[type="submit"]:hover,
 form button:hover {
-  background-color: #e67300;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+button[type="submit"]:active,
+form button:active {
+  transform: translateY(0);
 }
 
 /* =============================
-   Form Sections (Optional Class Groups)
+   Form Sections
    ============================= */
 
 .certificate-form-container,
 .education-form-container,
 .skill-form-container,
 .project-form-container {
-  max-width: 600px;
-  margin: 0 auto 30px;
-  padding: 25px;
-  background-color: #fffdf7;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  padding: 35px;
+  background: linear-gradient(135deg, #f8f9ff, #ffffff);
+  border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.1);
 }
 
 /* =============================
@@ -161,16 +298,24 @@ form button:hover {
 .project-message,
 .admin-message {
   text-align: center;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  animation: slideIn 0.5s ease-out;
+  font-size: 15px;
 }
 
 .success {
-  color: green;
+  color: #10b981;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border: 2px solid #10b981;
 }
 
 .error {
-  color: red;
+  color: #ef4444;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 2px solid #ef4444;
 }
 
 /* =============================
@@ -181,60 +326,101 @@ form button:hover {
 .education-table-container,
 .skill-table-container,
 .project-table-container {
-  max-width: 900px;
-  margin: 0 auto 30px;
+  max-width: 100%;
+  margin: 0 auto 40px;
   overflow-x: auto;
-  background-color: #fffef9;
-  padding: 20px;
+  background: #fff;
+  padding: 25px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 20px;
 }
 
 table th,
 table td {
-  padding: 12px 15px;
-  border: 1px solid #ffd9b3;
-  text-align: center;
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 table th {
-  background-color: #fff0e0;
-  color: #333;
-  font-weight: bold;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+table tr {
+  transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+  background: linear-gradient(135deg, #f8f9ff, #ffffff);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
 
 table td {
-  background-color: #fffef9;
+  background-color: #fff;
+  color: #2d3748;
+  font-size: 14px;
 }
 
 table a {
-  color: #0077cc;
+  color: #667eea;
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
 table a:hover {
-  text-decoration: underline;
+  background: rgba(102, 126, 234, 0.1);
+  color: #764ba2;
 }
 
 /* Delete buttons in tables */
 table button {
-  background-color: #ff6666;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
   color: white;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 15px;
-  font-weight: bold;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);
 }
 
 table button:hover {
-  background-color: #cc0000;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 90, 111, 0.4);
+}
+
+table button:active {
+  transform: translateY(0);
 }
 
 /* =============================
@@ -243,8 +429,82 @@ table button:hover {
 
 .admin-routes {
   text-align: center;
-  margin-top: 25px;
-  padding: 20px;
-  background-color: #fffaf5;
-  border-radius: 15px;
+  margin-top: 30px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9ff, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =============================
+   Responsive Design
+   ============================= */
+
+@media (max-width: 1024px) {
+  .admin-container,
+  .semi-circle-container {
+    width: 95%;
+    padding: 30px 20px;
+  }
+  
+  .admin-navbar {
+    gap: 10px;
+  }
+  
+  .nav-link {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-form-section h3,
+  .admin-table-section h3 {
+    font-size: 24px;
+  }
+  
+  form {
+    max-width: 100%;
+  }
+  
+  .certificate-form-container,
+  .education-form-container,
+  .skill-form-container,
+  .project-form-container {
+    padding: 25px 20px;
+  }
+  
+  table th,
+  table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  
+  .certificate-table-container,
+  .education-table-container,
+  .skill-table-container,
+  .project-table-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-link {
+    text-align: center;
+  }
+  
+  .admin-container {
+    padding: 20px 15px;
+  }
+  
+  button[type="submit"],
+  form button {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
 }
