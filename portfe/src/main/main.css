@@ -276,6 +276,43 @@
    Responsive Design
    ============================= */
 
+/* Extra Large Screens */
+@media (min-width: 1920px) {
+  .contact-card {
+    max-width: 650px;
+    padding: 3.5rem;
+  }
+  
+  .contact-title {
+    font-size: 3rem;
+  }
+}
+
+/* Large Desktop */
+@media (max-width: 1440px) {
+  .main-navbar {
+    padding: 14px 25px;
+  }
+}
+
+/* Standard Desktop */
+@media (max-width: 1024px) {
+  .main-navbar {
+    padding: 13px 22px;
+    gap: 9px;
+  }
+  
+  .main-navbar a {
+    padding: 9px 18px;
+    font-size: 15px;
+  }
+  
+  .contact-card {
+    max-width: 500px;
+  }
+}
+
+/* Tablet */
 @media (max-width: 768px) {
   .main-navbar {
     padding: 12px 20px;
@@ -287,8 +324,13 @@
     font-size: 14px;
   }
   
+  .contact-page {
+    padding: 1.75rem;
+  }
+  
   .contact-card {
     padding: 2rem;
+    border-radius: 25px;
   }
   
   .contact-title {
@@ -297,23 +339,48 @@
   
   .contact-description {
     font-size: 1rem;
+    margin-bottom: 2rem;
   }
   
   .contact-btn {
     padding: 0.875rem 1.5rem;
     font-size: 0.95rem;
   }
+  
+  .icon-lg {
+    width: 30px;
+    height: 30px;
+  }
 }
 
+/* Mobile Landscape */
+@media (max-width: 640px) {
+  .main-navbar {
+    padding: 10px 18px;
+  }
+  
+  .main-navbar a {
+    padding: 7px 15px;
+    font-size: 13px;
+  }
+  
+  .contact-title {
+    font-size: 1.85rem;
+  }
+}
+
+/* Mobile Portrait */
 @media (max-width: 480px) {
   .main-navbar {
     flex-wrap: wrap;
     padding: 10px 15px;
+    gap: 6px;
   }
   
   .main-navbar a {
     font-size: 13px;
-    padding: 7px 14px;
+    padding: 8px 14px;
+    border-radius: 20px;
   }
   
   .contact-page {
@@ -322,18 +389,114 @@
   
   .contact-card {
     padding: 1.5rem;
+    border-radius: 20px;
   }
   
   .contact-title {
     font-size: 1.75rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .contact-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+  
+  .contact-options {
+    gap: 1rem;
+  }
+  
+  .contact-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
   }
   
   .social-links {
     gap: 1.5rem;
+    margin-top: 2rem;
   }
   
   .icon-lg {
     width: 28px;
     height: 28px;
+  }
+  
+  .contact-footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .main-navbar {
+    padding: 8px 12px;
+  }
+  
+  .main-navbar a {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+  
+  .contact-page {
+    padding: 1rem;
+  }
+  
+  .contact-card {
+    padding: 1.25rem;
+  }
+  
+  .contact-title {
+    font-size: 1.5rem;
+  }
+  
+  .contact-description {
+    font-size: 0.9rem;
+  }
+  
+  .contact-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .social-links {
+    gap: 1.25rem;
+  }
+  
+  .icon-lg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Landscape Orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main-navbar {
+    padding: 8px 20px;
+  }
+  
+  .main-navbar a {
+    padding: 6px 14px;
+  }
+  
+  .contact-page {
+    padding: 1rem;
+  }
+  
+  .contact-card {
+    padding: 1.5rem;
+  }
+  
+  .contact-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .contact-description {
+    margin-bottom: 1.25rem;
+  }
+  
+  .social-links {
+    margin-top: 1.5rem;
   }
 }

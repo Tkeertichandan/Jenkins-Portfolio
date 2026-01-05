@@ -95,6 +95,28 @@
 /* =============================
    Responsive Design
    ============================= */
+
+/* Large Screens */
+@media (min-width: 1920px) {
+  #root {
+    max-width: 1600px;
+  }
+}
+
+/* Desktop & Laptop */
+@media (max-width: 1024px) {
+  #root {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .logo {
+    height: 5em;
+    padding: 1.2em;
+  }
+}
+
+/* Tablet */
 @media (max-width: 768px) {
   #root {
     padding: 1rem;
@@ -107,5 +129,50 @@
   
   .card {
     padding: 1.5em;
+    border-radius: 15px;
+  }
+  
+  .read-the-docs {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  #root {
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    height: 3.5em;
+    padding: 0.8em;
+  }
+  
+  .card {
+    padding: 1.2em;
+    border-radius: 12px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .logo {
+    height: 3em;
+    padding: 0.6em;
+  }
+  
+  .card {
+    padding: 1em;
+  }
+}
+
+/* Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .logo {
+    height: 3em;
+  }
+  
+  .card {
+    padding: 1em;
   }
 }
