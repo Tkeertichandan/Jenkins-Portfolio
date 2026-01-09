@@ -32,9 +32,9 @@ export default function UserViewCertificate() {
         <div className="user-card-grid">
           {certificates.map((cert) => (
             <div key={cert.id} className="user-card">
-              <h3>{cert.name}</h3>
+              <h3 className="backend-data-title">{cert.name}</h3>
               <p>
-                <strong>Company:</strong> {cert.company}
+                <strong className="backend-data-label">Company:</strong> <span className="backend-data-value">{cert.company}</span>
               </p>
               {cert.link && (
                 <a

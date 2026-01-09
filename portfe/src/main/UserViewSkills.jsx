@@ -31,9 +31,9 @@ export default function UserViewSkills() {
         <div className="user-card-grid">
           {skills.map((skill) => (
             <div className="user-card" key={skill.id}>
-              <h3>{skill.name}</h3>
+              <h3 className="backend-data-title">{skill.name}</h3>
               <p>
-                <strong>Category:</strong> {skill.category}
+                <strong className="backend-data-label">Category:</strong> <span className="backend-data-value">{skill.category}</span>
               </p>
               {skill.link && (
                 <a

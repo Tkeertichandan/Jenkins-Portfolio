@@ -31,8 +31,8 @@ export default function UserViewProject() {
         <div className="user-card-grid">
           {projectList.map((project) => (
             <div key={project.id} className="user-card">
-              <h3>{project.topic}</h3>
-              <p>{project.description}</p>
+              <h3 className="backend-data-title">{project.topic}</h3>
+              <p className="backend-data-description">{project.description}</p>
               {project.gitlink && (
                 <a
                   href={project.gitlink}

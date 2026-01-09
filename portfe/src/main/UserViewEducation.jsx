@@ -31,18 +31,18 @@ export default function UserViewEducation() {
         <div className="user-card-grid">
           {educationList.map((edu) => (
             <div key={edu.id} className="user-card">
-              <h3>{edu.name}</h3>
+              <h3 className="backend-data-title">{edu.name}</h3>
               <p>
-                <strong>Category:</strong> {edu.category}
+                <strong className="backend-data-label">Category:</strong> <span className="backend-data-value">{edu.category}</span>
               </p>
               <p>
-                <strong>Place:</strong> {edu.place}
+                <strong className="backend-data-label">Place:</strong> <span className="backend-data-value">{edu.place}</span>
               </p>
               <p>
-                <strong>Start Date:</strong> {edu.startdate}
+                <strong className="backend-data-label">Start Date:</strong> <span className="backend-data-value">{edu.startdate}</span>
               </p>
               <p>
-                <strong>End Date:</strong> {edu.enddate}
+                <strong className="backend-data-label">End Date:</strong> <span className="backend-data-value">{edu.enddate}</span>
               </p>
             </div>
           ))}
